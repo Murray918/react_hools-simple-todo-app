@@ -20,13 +20,31 @@ function App() {
       isCompleted: false
     }
   ])
+
+  const addTodo = () => {
+    const newTodos = [...todos, { setTodos }]
+    setTodos(newTodos)
+  }
+
+   const completeTodo = index => {
+      const newTodos = [...todos];
+      newTodos[index].isCompleted = !newTodos[index].isCompleted;
+      setTodos(newTodos);
+   };
+
   return (
     <div className="app">
       <div className="todo-list">
       <h1>Create a Todo with react hooks</h1>
-        {todos.map((todo, index) => (
-          <Todo key={index} index={index} todo={todo} />
-        ))}
+        { todos.map((todo, index) => (
+          <Todo 
+              key = { index } 
+              index = { index } 
+              todo = { todo } 
+              completeTodo = { completeTodo }
+          />
+        )) 
+      }
       </div>
     </div>
   );
