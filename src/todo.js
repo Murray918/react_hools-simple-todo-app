@@ -1,5 +1,5 @@
 import React from "react";
-function Todo({ todo, index, completeTodo}) {
+function Todo({ todo, index, completeTodo, removeTodo}) {
    return (
       <div
          className="todo"
@@ -9,6 +9,7 @@ function Todo({ todo, index, completeTodo}) {
          
          <div>
             <button onClick={() => completeTodo(index)}>{todo.isCompleted ? "Not done" : "Done"}</button>
+            <button onClick={() => removeTodo(index)}>x</button>
          </div>
       </div>
    );

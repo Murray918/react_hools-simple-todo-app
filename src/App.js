@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Todo from './todo'
 import TodoFrom from './todo_form'
@@ -21,8 +20,8 @@ function App() {
     }
   ])
 
-  const addTodo = () => {
-    const newTodos = [...todos, { setTodos }]
+  const addTodo = text => {
+    const newTodos = [...todos, { text }]
     setTodos(newTodos)
   }
 
@@ -31,6 +30,12 @@ function App() {
       newTodos[index].isCompleted = !newTodos[index].isCompleted;
       setTodos(newTodos);
    };
+
+   const removeTodo = (index) => {
+    const newTodos = [...todos]
+    newTodos.splice(index, 1)
+    setTodos(newTodos)
+   }
 
   return (
     <div className="app">
@@ -42,10 +47,13 @@ function App() {
               index = { index } 
               todo = { todo } 
               completeTodo = { completeTodo }
+              removeTodo = { removeTodo }
           />
         )) 
       }
+       <TodoFrom addTodo = { addTodo } />
       </div>
+     
     </div>
   );
 }
